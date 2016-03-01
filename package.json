@@ -1,0 +1,25 @@
+{
+  "name": "opkoko-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "node-sass": "^3.3.3"
+  },
+  "devDependencies": {
+    "node-sass": "^3.4.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snichme/opkoko-web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/snichme/opkoko-web/issues"
+  },
+  "homepage": "https://github.com/snichme/opkoko-web#readme"
+}

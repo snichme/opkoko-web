@@ -1,0 +1,83 @@
+html,body {
+    box-sizing: border-box;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.45;
+}
+.opkoko-program, .schedule {
+    width: 835px;
+}
+.schedule table {
+    width: 100%;
+    border-spacing: 0px;
+    border-collapse: separate;
+}
+.schedule th {
+    text-align: left;
+
+}
+.schedule td {
+    padding: 0px;
+    vertical-align: top;
+    width: 189px;
+}
+.schedule td:first-child {
+    width: 45px;
+}
+.schedule__cursor {
+    position: absolute;
+    height: 1px;
+    background-color: #9C27B0;
+    z-index: 2;
+    width: 824px;
+}
+.times {
+    width: 45px;
+}
+.time {
+    height: 29px;
+    border-bottom: 1px solid #ccc;
+}
+.time--half {
+    border-bottom: 1px solid #eee;
+
+}
+.pres {
+    display: block;
+    width: 177px;
+    padding: 0px 5px;
+    /* border-left: 1px solid #ccc; */
+    /* border-bottom: 1px solid #ccc; */
+    overflow: auto;
+    font-size: 14px;
+}
+.calendar .pres {
+    position: absolute;
+    cursor: pointer;
+}
+.pres--15 {
+    height: 15px;
+}
+.pres--30 {
+    height: 30px;
+}
+.pres--45 {
+    height: 45px;
+}
+.pres--240 {
+    height: 240px;
+}
+
+.pres--dev {
+    background-color: #4CAF50;
+}
+.pres--q {
+    background-color: #FFEB3B;
+}
+.pres--pl {
+    background-color: #03A9F4;
+}
+.pres--sec {
+    background-color: #F44336;
+}

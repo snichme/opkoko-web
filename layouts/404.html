@@ -1,0 +1,47 @@
+
+{{ partial "header.html" . }}
+{{ partial "menu.html" . }}
+
+<div id="index-banner" class="parallax-container">
+
+  <div class="section no-pad-bot">
+    <div class="container">
+      <br><br>
+      <h1 class="header center">OPKoKo 16.1 Madrid</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">OPKoKo är Omegapoints kompetenskonferens</h5>
+        <br><br>
+      </div>
+    </div>
+  </div>
+  <div class="parallax"><img src="background1.jpg" alt="Unsplashed background img 1"></div>
+
+</div>
+  <div class="container">
+    <div class="section">
+      <h2>ERROR</h2>
+  </div>
+  {{ partial "header.html" . }}
+{{ partial "menu.html" . }}
+
+<div class="container">
+<div class="section">
+
+<h3>{{ .Title }}</h3>
+<ul id="list">
+     {{ range .Data.Pages }}
+<li>
+<a href="{{ .Permalink }}">{{ .Title }}</a>
+<div class="meta">{{ .Date.Format "Mon, Jan 2, 2006" }}</div>
+</li>
+{{ end }}
+
+  </ul>
+
+
+</div>
+
+</div>
+{{ partial "footer.html" . }}
+
+	{{ partial "footer.html" . }}
