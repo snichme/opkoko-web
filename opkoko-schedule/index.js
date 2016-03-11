@@ -5,7 +5,7 @@ import when from 'when'
 import rest from 'rest'
 import mime from 'rest/interceptor/mime'
 import ReactTabs from 'react-tabs'
-
+import _ from 'lodash'
 import Schedule from './components/Schedule'
 import Currently from './components/Currently'
 
@@ -78,13 +78,8 @@ const handleSelect = (index) => {
   }
 }
 
-const render = (program, currentDay, favs, activeTab) => {
+const renderProgram = (el, program, activeTab) => {
   const now = nowAsTime();
-  if(favs.length > 0) {
-    let personal = createPersonalSchedule(program, favs);
-    program  = program.concat(personal);
-  }
-  const currentRunning = currentForDay(program, currentDay, now);
 
   renderToDom(
     <div className="opkoko-program">
@@ -92,13 +87,9 @@ const render = (program, currentDay, favs, activeTab) => {
           onSelect={handleSelect}
           selectedIndex={activeTab} >
         <TabList>
-          <Tab>Just nu</Tab>
           {program.map((track, i) => (<Tab key={"tab" + i}>{track.title}</Tab>))}
         </TabList>
 
-        <TabPanel>
-          <Currently onPresSelected={showInfoModal} {...currentRunning} />
-        </TabPanel>
         {program.map((item, i) => (
            <TabPanel key={"tabpanel" + i}>
              <Schedule onPresFavourited={togglePresFavourited} onPresSelected={showInfoModal} {...item} />
@@ -106,14 +97,32 @@ const render = (program, currentDay, favs, activeTab) => {
          ))}
       </Tabs>
     </div>,
-    document.getElementById('root')
+    el
   )
+}
+
+const renderCurrent = (el, program, currentDay) => {
+    const now = nowAsTime();
+    const currentRunning = currentForDay(program, currentDay, now);        
+    renderToDom(<Currently onPresSelected={showInfoModal} {...currentRunning} />, el);
 }
 
 const run = () => {
   when.all([getSchedule('schedule.json'), getFavourites(), getActiveTab()]).then(function(res) {
     let [program, favs, tab] = res;
-    render(program, 0, favs, tab);
+    
+    _.each(document.querySelectorAll('[opkoko-current]'), (el) => {
+        renderCurrent(el, program, 0);        
+    })
+
+    if(favs.length > 0) {
+        let personal = createPersonalSchedule(program, favs);
+        program  = program.concat(personal);
+    }
+    _.each(document.querySelectorAll('[opkoko-program]'), (el) => {
+        renderProgram(el, program, tab);
+    })
+    
   })
 }
 run();
